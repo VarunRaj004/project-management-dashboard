@@ -403,7 +403,7 @@ const handleSubmit = (e) => {
 - Data is stored in browser localStorage, so it persists between sessions
 - Clearing browser cache will delete all product data
 - Maximum recommended products: 1000 (localStorage limit ~5MB)
-- Form validation happens on client-side only (OK for this assessment)
+- Form validation happens on client-side only 
 - In production, always validate on server as well
 
 ---

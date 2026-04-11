@@ -11,8 +11,10 @@ import {
 export const useProducts = () => {
     const [products,setProducts] = useState<Product []>([]);
     const [isLoading,setisLoading] = useState(true);
+    const [isHydrated, setIsHydrated] = useState(false); 
 
     useEffect(() => {
+        setIsHydrated(true);
         setProducts(getAllProducts());
         setisLoading(false);
     }, []);
@@ -32,11 +34,21 @@ export const useProducts = () => {
         setProducts(getAllProducts());
     }
 
+    if (!isHydrated) {
+        return {
+        products: [],
+        isLoading: true,
+        addProduct: () => {},
+        updateProduct: () => {},
+        deleteProduct: () => {}
+        };
+    }
+
     return {
         products,
         isLoading,
         addProduct,
         updateProduct,
         deleteProduct
-    }
+    };
 }
